@@ -15,6 +15,7 @@ namespace Resuelve_prueba_ing_backend
 {
     public class Startup
     {
+        public static Dictionary<string,Equipo> Equipos { set; get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,6 +28,7 @@ namespace Resuelve_prueba_ing_backend
         {
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            Equipos= new Dictionary<string, Equipo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
