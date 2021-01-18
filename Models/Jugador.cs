@@ -24,11 +24,7 @@ namespace Resuelve_prueba_ing_backend
       set{
         _MetaIndividual=value;
         _porcentajeMetaIndividual = (goles*100)/_MetaIndividual;
-        if(_PorcentajeMetaEquipo>-1)
-        {
-          _promedioMetas=(PorcentajeMetaEquipo + _porcentajeMetaIndividual)/2;
-          sueldo_completo = sueldo+(bono*(_promedioMetas/100));
-        }
+        CalcularSueldoCompleto();
       } 
       get{
         return _MetaIndividual;
@@ -39,11 +35,7 @@ namespace Resuelve_prueba_ing_backend
     public double PorcentajeMetaEquipo{
       set{
         _PorcentajeMetaEquipo=value;
-        if(_porcentajeMetaIndividual>-1)
-        {
-          _promedioMetas=(PorcentajeMetaEquipo + _porcentajeMetaIndividual)/2;
-          sueldo_completo = sueldo+(bono*(_promedioMetas/100));
-        }
+        CalcularSueldoCompleto();
       }
       get{
         return _PorcentajeMetaEquipo;
@@ -108,6 +100,20 @@ namespace Resuelve_prueba_ing_backend
       }
 
       return Correcto;
+    }
+    #endregion
+
+    #region  Metodos privados
+    /// <summary>
+    /// Metodo para calcular el sueldo completo de un jugador
+    /// </summary>
+    public void CalcularSueldoCompleto()
+    {
+      if(_porcentajeMetaIndividual>-1)
+        {
+          _promedioMetas=(PorcentajeMetaEquipo + _porcentajeMetaIndividual)/2;
+          sueldo_completo = sueldo+(bono*(_promedioMetas/100));
+        }
     }
     #endregion
   }

@@ -23,7 +23,9 @@ namespace Resuelve_prueba_ing_backend
     private Dictionary<string,Nivel> _Niveles { set; get; }
 
     private int MetaEquipo=0;
+    private int TotalGolesEquipo=0;
 
+    private double PorcentajeMetaEquipo=0;
     #endregion
     public Equipo()
     {
@@ -49,6 +51,7 @@ namespace Resuelve_prueba_ing_backend
         {
           jugadorAgregar.MetaIndividual= _Niveles[jugadorAgregar.nivel].GolMes;
           Jugadores.Add(jugadorAgregar);
+          CalcularMetaEquipo();
           Agregado=true;
         }
       }
@@ -146,6 +149,27 @@ namespace Resuelve_prueba_ing_backend
 
       return Correcto;
     }
+    #endregion
+
+    #region Calculos
+    /// <summary>
+    /// Metodo para calcular las metas del equipo y pasarselo a cada jugador
+    /// </summary>
+    private void CalcularMetaEquipo()
+    {
+      MetaEquipo=0;
+      TotalGolesEquipo=0;
+      PorcentajeMetaEquipo=0;
+      foreach(Jugador jugador in Jugadores)
+      {
+        MetaEquipo+=_Niveles[jugador.nivel].GolMes;
+        TotalGolesEquipo+= jugador.goles;
+        PorcentajeMetaEquipo = (TotalGolesEquipo*100)/MetaEquipo;
+      }
+      foreach(Jugador jugador in Jugadores)
+        jugador.PorcentajeMetaEquipo=PorcentajeMetaEquipo;
+    }
+
     #endregion
 
     #region  Metodos para los niveles
