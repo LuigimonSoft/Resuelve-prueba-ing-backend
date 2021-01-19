@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
+
 namespace Resuelve_prueba_ing_backend
 {
     public class Startup
@@ -28,6 +29,21 @@ namespace Resuelve_prueba_ing_backend
         {
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddSwaggerGen(swagger =>
+            {
+                var contact = new Swashbuckle.AspNetCore.Swagger.Contact { Name = SwaggerConfiguration.ContactName, Url =  SwaggerConfiguration.ContactUrl };
+                swagger.SwaggerDoc(SwaggerConfiguration.DocNameV1,
+                                   new Swashbuckle.AspNetCore.Swagger.Info 
+                                   {
+                                       Title = SwaggerConfiguration.DocInfoTitle,
+                                       Version = SwaggerConfiguration.DocInfoVersion,
+                                       Description = SwaggerConfiguration.DocInfoDescription,
+                                       Contact = contact
+                                   }
+                                    );
+            });
+
             Equipos= new Dictionary<string, Models.Equipo>();
             List<string> Errores= new List<string>();
 
@@ -59,6 +75,15 @@ namespace Resuelve_prueba_ing_backend
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            
+            app.UseSwagger();
+
+            
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint(SwaggerConfiguration.EndpointUrl, SwaggerConfiguration.EndpointDescription);
+                c.RoutePrefix = "documentacion";
+            });
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
