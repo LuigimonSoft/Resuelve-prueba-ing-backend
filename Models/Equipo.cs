@@ -31,6 +31,7 @@ namespace Resuelve_prueba_ing_backend.Models
     {
       _Niveles= new Dictionary<string, Nivel>();
       Jugadores= new List<Jugador>();
+      Niveles= new List<Nivel>();
     }
 
     #region Metodos publicos
@@ -76,6 +77,7 @@ namespace Resuelve_prueba_ing_backend.Models
        if(VerificarNivel(nivelAgregar, out Errores))
        {
          _Niveles.Add(nivelAgregar.nivel,nivelAgregar);
+         Niveles.Add(nivelAgregar);
          return true;
        }
        else 
@@ -87,7 +89,7 @@ namespace Resuelve_prueba_ing_backend.Models
     /// </summary>
     /// <param name="Errores"> Lista de errores del equipo</param>
     /// <returns>Regresa true si el equipo es correcto en caso contrario regresa false</returns>
-    public bool Verificar(List<string> Errores)
+    public bool Verificar(out List<string> Errores)
     {
       bool Correcto=true;
       Errores= new List<string>();

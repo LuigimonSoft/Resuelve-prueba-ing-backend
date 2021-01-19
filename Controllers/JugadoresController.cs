@@ -7,11 +7,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Resuelve_prueba_ing_backend.Controllers
 {
-  [Route("Jugadores")]
+  [Route("[controller]")]
   [ApiController]
   public class JugadoresController : ControllerBase
   {
-    [HttpPost]
+        /// <summary>
+        /// Procedimiento POST para calcular el salario de cada uno de los jugadores de cada equipo
+        /// </summary>
+        /// <param name="jugadoresCalcular">Contiene el listado de jugadores a calcular</param>
+        /// <returns>Regresa el listado de jugadores con su salario calculado o en caso de error regresa los detalles de cada error</returns>
+        [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult ProcesarJugadores(Models.cJugadores jugadoresCalcular)

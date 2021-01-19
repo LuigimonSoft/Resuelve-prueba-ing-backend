@@ -9,8 +9,6 @@ namespace Resuelve_prueba_ing_backend.Models
   /// </summary>
   public class Jugador{
     public string nombre { set; get; }
-
-    [Newtonsoft.Json.JsonIgnore]
     public string nivel { set; get; }
     public int goles { set; get; }
     public int? goles_minimos { set; get; }
