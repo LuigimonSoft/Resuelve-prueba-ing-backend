@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Resuelve_prueba_ing_backend
+namespace Resuelve_prueba_ing_backend.Models
 {
   /// <summary>
   /// Clase jugador contiene la descripcion de cada jugador 
@@ -10,7 +10,7 @@ namespace Resuelve_prueba_ing_backend
   public class Jugador{
     public string nombre { set; get; }
 
-    [Newtonsoft.Json.JsonProperty(NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    [Newtonsoft.Json.JsonIgnore]
     public string nivel { set; get; }
     public int goles { set; get; }
     public int? goles_minimos { set; get; }
@@ -19,7 +19,7 @@ namespace Resuelve_prueba_ing_backend
     public double? sueldo_completo { set; get; }
     public string equipo { set; get; }
 
-    [Newtonsoft.Json.JsonProperty(NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    [Newtonsoft.Json.JsonIgnore]
     public int MetaIndividual{ 
       set{
         _MetaIndividual=value;
@@ -31,7 +31,7 @@ namespace Resuelve_prueba_ing_backend
       }
     }
 
-    [Newtonsoft.Json.JsonProperty(NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+    [Newtonsoft.Json.JsonIgnore]
     public double PorcentajeMetaEquipo{
       set{
         _PorcentajeMetaEquipo=value;

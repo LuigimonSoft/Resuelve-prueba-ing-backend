@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Resuelve_prueba_ing_backend
+namespace Resuelve_prueba_ing_backend.Models
 {
   /// <summary>
   ///  Clase Nivel representa un nivel de cada equipo

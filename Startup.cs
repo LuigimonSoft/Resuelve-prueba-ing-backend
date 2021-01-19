@@ -15,7 +15,7 @@ namespace Resuelve_prueba_ing_backend
 {
     public class Startup
     {
-        public static Dictionary<string,Equipo> Equipos { set; get; }
+        public static Dictionary<string,Models.Equipo> Equipos { set; get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -28,28 +28,28 @@ namespace Resuelve_prueba_ing_backend
         {
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            Equipos= new Dictionary<string, Equipo>();
+            Equipos= new Dictionary<string, Models.Equipo>();
             List<string> Errores= new List<string>();
 
             /* -------- Valores por default de los equipos rojo y azul -------- */
 
-            Equipo EquipoRojo = new Equipo();
+            Models.Equipo EquipoRojo = new Models.Equipo();
             EquipoRojo.Nombre="rojo";
             /* ------ Niveles por default --------- */
-            EquipoRojo.AgregarNivel(new Nivel(){nivel="A",GolMes=5 },out Errores);
-            EquipoRojo.AgregarNivel(new Nivel(){nivel="B",GolMes=10 },out Errores);
-            EquipoRojo.AgregarNivel(new Nivel(){nivel="C",GolMes=15 },out Errores);
-            EquipoRojo.AgregarNivel(new Nivel(){nivel="Cuauh",GolMes=20 },out Errores);
+            EquipoRojo.AgregarNivel(new Models.Nivel(){nivel="A",GolMes=5 },out Errores);
+            EquipoRojo.AgregarNivel(new Models.Nivel(){nivel="B",GolMes=10 },out Errores);
+            EquipoRojo.AgregarNivel(new Models.Nivel(){nivel="C",GolMes=15 },out Errores);
+            EquipoRojo.AgregarNivel(new Models.Nivel(){nivel="Cuauh",GolMes=20 },out Errores);
             /* ------------------------------------ */
             Equipos.Add("rojo",EquipoRojo);
 
-            Equipo EquipoAzul = new Equipo();
+            Models.Equipo EquipoAzul = new Models.Equipo();
             EquipoAzul.Nombre="azul";
             /* ------ Niveles por default --------- */
-            EquipoAzul.AgregarNivel(new Nivel(){nivel="A",GolMes=5 },out Errores);
-            EquipoAzul.AgregarNivel(new Nivel(){nivel="B",GolMes=10 },out Errores);
-            EquipoAzul.AgregarNivel(new Nivel(){nivel="C",GolMes=15 },out Errores);
-            EquipoAzul.AgregarNivel(new Nivel(){nivel="Cuauh",GolMes=20 },out Errores);
+            EquipoAzul.AgregarNivel(new Models.Nivel(){nivel="A",GolMes=5 },out Errores);
+            EquipoAzul.AgregarNivel(new Models.Nivel(){nivel="B",GolMes=10 },out Errores);
+            EquipoAzul.AgregarNivel(new Models.Nivel(){nivel="C",GolMes=15 },out Errores);
+            EquipoAzul.AgregarNivel(new Models.Nivel(){nivel="Cuauh",GolMes=20 },out Errores);
             /* ------------------------------------ */
             Equipos.Add("azul",EquipoAzul);
 

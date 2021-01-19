@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Resuelve_prueba_ing_backend
+namespace Resuelve_prueba_ing_backend.Models
 {
   /// <summary>
   /// Clase Equipo contiene la descripcion de cada equipo y sus jugadores asi como los niveles
@@ -50,6 +50,7 @@ namespace Resuelve_prueba_ing_backend
         if(VerificarJugador(jugadorAgregar,out Errores))
         {
           jugadorAgregar.MetaIndividual= _Niveles[jugadorAgregar.nivel].GolMes;
+          jugadorAgregar.goles_minimos = jugadorAgregar.MetaIndividual;
           Jugadores.Add(jugadorAgregar);
           CalcularMetaEquipo();
           Agregado=true;
